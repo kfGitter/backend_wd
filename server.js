@@ -69,16 +69,15 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Health check route to confirm server is running
+app.get('/', (req, res) => {
+    res.send("Server is running~");
+});
+
 // Catch-all route for undefined endpoints
 app.use((req, res) => {
     res.status(404).send('Route not found');
 });
-
-// Server deployment
-app.use((req, res) =>{
-    res.send("Server is runniiing~")
-})
-
 
 // Start the server
 app.listen(port, '0.0.0.0', () => {
